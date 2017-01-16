@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title></title>
+    <link rel="stylesheet" href="">
+    <script src="../../jquery/lib/jquery-3.1.1.min.js"></script>
+    <style type="text/css" media="screen">
+    * {
+        margin: 0;
+        padding: 0;
+    }
+    li{
+    	list-style: none;
+    }
+    .box{
+    	width: 760px;
+    	height: 300px;
+    	margin: 100px auto;
+    	position: relative;
+    	overflow: hidden;
+    }
+    .box>ul>li{
+    	position: absolute;
+    	left: 0;
+    	top: 0;
+    	width: 100%;
+    	height: 100%
+    }
+    .box>ul>li:nth-child(1){
+    	background: url(images/bg1.jpg) no-repeat;
+    }
+    .box>ul>li:nth-child(2){
+    	background: url(images/bg2.jpg) no-repeat;
+    }
+    .box>ul>li:nth-child(3){
+    	background: url(images/bg3.jpg) no-repeat;
+    }
+    .box>ul>li:nth-child(4){
+    	background: url(images/bg4.jpg) no-repeat;
+    }
+    .box>ul>li:nth-child(5){
+    	background: url(images/bg5.jpg) no-repeat;
+    }
+    .box>ul>li>img:first-child{
+    	position: absolute;
+    	left: -760px;
+    	top: 0;
+    }
+    .box>ul>li>img:last-child{
+    	position: absolute;
+    	left: -20px;
+    	top: 0px;
+    }
+    .indicator{
+    	position: absolute;
+    	right: 20px;
+    	bottom: 10px;
+    }
+    .indicator>ul>li{
+    	float: left;
+    	width: 20px;
+    	height: 20px;
+    	border:1px solid #000;
+    	margin-right: 3px;
+    }
+    .indicator .active{
+    	background-color: #fff;
+    }
+    </style>
+</head>
+
+<body>
+    <div class="box">
+        <ul>
+            <li style="display: block">
+                <img src="images/text1.png" alt="" class="img1">
+                <img src="images/con1.png" alt="" class="img2">
+            </li>
+             <li>
+                <img src="images/text2.png" alt="" class="img1">
+                <img src="images/con2.png" alt="" class="img2">
+            </li>
+             <li>
+                <img src="images/text3.png" alt="" class="img1">
+                <img src="images/con3.png" alt="" class="img2">
+            </li>
+             <li>
+                <img src="images/text4.png" alt="" class="img1">
+                <img src="images/con4.png" alt="" class="img2">
+            </li>
+             <li>
+                <img src="images/text5.png" alt="" class="img1">
+                <img src="images/con5.png" alt="" class="img2">
+            </li>
+     		
+        </ul>
+
+        <div class="indicator">
+        	<ul>
+        		<li class="active"></li>
+        		<li></li>
+        		<li></li>
+        		<li></li>
+        		<li></li>
+        	</ul>
+        </div>
+    </div>
+
+    <script>
+    	$(function(){
+    		var index = 0;
+    		var timer = setInterval(startMove,3000);
+
+    		function startMove() {
+    			$('.box>ul>li').eq(index).fadeIn().siblings().fadeOut();
+    			$('.indicator>ul>li').eq(index).addClass('active').siblings().removeClass('active');
+
+    			$('.box>ul>li').eq(index).find('.img1').show().animate({'left':'0px'},1500,function(){
+    				$('.box>ul>li').eq(index).find('.img2').show().animate({'left':'0px'},1000);
+
+    				index ++ ;
+    				if (index == 5) {
+    					index = 0;
+    				}
+    			});
+    			$('.box>ul>li').eq(index).siblings().find('.img1').css({'left':'-760px'});
+    			$('.box>ul>li').eq(index).siblings().find('.img2').css({'left':'-20px','display':'none'})
+    		}
+    		startMove();
+    	})
+    </script>
+</body>
+
+</html>

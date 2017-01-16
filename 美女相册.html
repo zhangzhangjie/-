@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title></title>
+    <link rel="stylesheet" href="">
+    <script src="../lib/jquery-3.1.1.min.js"></script>
+    <style type="text/css" media="screen">
+    .box {
+        width: 900px;
+        height: 600px;
+        border: 1px solid black;
+        margin: 0px auto;
+    }
+    
+    .box>img {
+        float: left;
+        width: 300px;
+        height: 200px;
+    }
+    </style>
+</head>
+
+<body>
+    <div class="box clear">
+        <img src="images/1.jpg" alt="" class="img1">
+        <img src="images/2.jpg" alt="" class="img2">
+        <img src="images/3.jpg" alt="" class="img3">
+        <img src="images/4.jpg" alt="" class="img4">
+        <img src="images/5.jpg" alt="" class="img5">
+        <img src="images/6.jpg" alt="" class="img6">
+        <img src="images/7.jpg" alt="" class="img7">
+        <img src="images/8.jpg" alt="" class="img8">
+        <img src="images/9.jpg" alt="" class="img9">
+    </div>
+    <script>
+    $(function() {
+        $('.img1').click(function() {
+            $('.img1').fadeToggle(1000, function() {
+                $(this).fadeToggle(1000);
+            })
+        })
+        $('.img2').click(function() {
+            $('.img2').show('slow', function() {
+                $(this).hide('fast');
+            })
+        })
+        $('.img3').click(function() {
+            $('.img3').toggle(2000, function() {
+                $(this).toggle('slow');
+            })
+        })
+        $('.img4').click(function() {
+            $('.img4').fadeIn(2000, function() {
+                $(this).fadeOut(2000);
+            })
+        })
+        $('.img5').click(function() {
+            $(this).fadeTo(2000,1.0);
+        }, function() {
+            $(this).fadeTo(2000,0.3);
+        })
+
+        $('.img6').click(function() {
+            $('.img6').slideUp(1000, function() {
+                $(this).slideDown('fast');
+            })
+        })
+        $('.img7').click(function(){
+        	$('.img7').fadeToggle(2000,function(){
+        		$(this).fadeToggle(2000);
+        	})
+        })
+        $('.img8').click(function(){
+        	$('.img8').animate({'height':'300px','width':'500px'},2000,function(){
+        		$(this).animate(2000);
+        	})
+        })
+        $('.img9').click(function(){
+        	$('.img9').hide(2000,function(){
+        		$(this).show('slow');
+        	})
+        })
+
+
+    })
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title></title>
+	<link rel="stylesheet" href="">
+	<script src="../../jquery/lib/jquery-3.1.1.min.js"></script>
+</head>
+<body>
+	<div style="width: 100px;height:100px;background-color: yellow;">
+		
+	</div>
+	<button type="button1" id="btn1">showhide动画</button>
+	<button type="button2" id="btn2">fade动画</button>
+	<script>
+		//jQuery 支持的动画
+		//显隐动画 show()  hide()  toggle()
+		//渐隐动画  fadeIn()  fadeOut()  fadeTo()  fadeToggle()
+		//slide动画    slideDown()  slideUp()     slideToggle()
+		//自定义动画     animate()
+
+		//显隐动画:通过把元素的width height opacity  设置为0产生的动画
+
+		$(function(){
+			$('#btn1').click(function(){
+				//显示，无参，没有动画效果
+				//show(speed,callback)
+				//speed  单位毫秒    1000    1s
+				//                   fast    0.2s
+				//                   normal  0.4s
+				//                   slow     0.6s
+				//callback   动画结束时调用的回调函数
+				
+				//隐藏
+				// $('div').hide('slow',function(){
+				// 	$(this).show('fast');
+				// });
+
+				// toggle(speed,callback) 根据当前的状态，以动画的方式反方向执行，如果隐藏就显示，如果显示就隐藏
+				$('div').toggle(2000,function(){
+					$(this).toggle('slow');
+				})
+			})
+			$('#btn2').click(function(){
+				//fadeIn fadeOut 参数和show一样
+				// $('div').fadeOut(1000,function(){
+				// 	$(this).fadeIn(1000);
+				// })
+
+				//fadeToggle 如果当前透明就不透明，如果当前不透明就变为透明
+				$('div').fadeToggle(1000,function(){
+					$(this).fadeToggle(1000);
+				})
+
+				//fadeTo(speed,opacity,callback)
+				
+				//slideDown,slideUp通过修改元素的height值来实现动画效果
+				$('div').slideUp(1000,function(){
+					$(this).slideDown('fast');
+				})
+			})
+
+			$('div').hover(function(){
+				$(this).fadeTo(2000,0.5);
+			},function(){
+				$(this).fadeTo(2000,1.0);
+			})
+		})
+
+
+	</script>
+</body>
+</html>
